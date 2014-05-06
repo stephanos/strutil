@@ -1,87 +1,87 @@
-package strings2_test
+package strutil_test
 
 import (
 	. "github.com/101loops/bdd"
-	"github.com/101loops/strings2"
+	"github.com/101loops/strutil"
 )
 
 var _ = Describe("substring", func() {
 
 	It("returns tail", func() {
-		Check(strings2.Tail(""), Equals, "")
-		Check(strings2.Tail("a"), Equals, "")
-		Check(strings2.Tail("abc"), Equals, "bc")
+		Check(strutil.Tail(""), Equals, "")
+		Check(strutil.Tail("a"), Equals, "")
+		Check(strutil.Tail("abc"), Equals, "bc")
 	})
 
 	It("returns init", func() {
-		Check(strings2.Init(""), Equals, "")
-		Check(strings2.Init("a"), Equals, "")
-		Check(strings2.Init("abc"), Equals, "ab")
+		Check(strutil.Init(""), Equals, "")
+		Check(strutil.Init("a"), Equals, "")
+		Check(strutil.Init("abc"), Equals, "ab")
 	})
 
 	It("returns head", func() {
-		Check(strings2.Head(""), Equals, "")
-		Check(strings2.Head("!"), Equals, "!")
-		Check(strings2.Head("abc"), Equals, "a")
+		Check(strutil.Head(""), Equals, "")
+		Check(strutil.Head("!"), Equals, "!")
+		Check(strutil.Head("abc"), Equals, "a")
 	})
 
 	It("returns last", func() {
-		Check(strings2.Last(""), Equals, "")
-		Check(strings2.Last("!"), Equals, "!")
-		Check(strings2.Last("abc"), Equals, "c")
+		Check(strutil.Last(""), Equals, "")
+		Check(strutil.Last("!"), Equals, "!")
+		Check(strutil.Last("abc"), Equals, "c")
 	})
 
 	It("truncates", func() {
-		Check(strings2.Truncate("abcdef", 0), Equals, "")
-		Check(strings2.Truncate("abcdef", 1), Equals, "a...")
-		Check(strings2.Truncate("abcdef", 2), Equals, "ab...")
-		Check(strings2.Truncate("abcdef", 3), Equals, "abcdef")
-		Check(strings2.Truncate("abcdef", 4), Equals, "abcdef")
-		Check(strings2.Truncate("abcdef", 5), Equals, "abcdef")
-		Check(strings2.Truncate("abcdef", 6), Equals, "abcdef")
+		Check(strutil.Truncate("abcdef", 0), Equals, "")
+		Check(strutil.Truncate("abcdef", 1), Equals, "a...")
+		Check(strutil.Truncate("abcdef", 2), Equals, "ab...")
+		Check(strutil.Truncate("abcdef", 3), Equals, "abcdef")
+		Check(strutil.Truncate("abcdef", 4), Equals, "abcdef")
+		Check(strutil.Truncate("abcdef", 5), Equals, "abcdef")
+		Check(strutil.Truncate("abcdef", 6), Equals, "abcdef")
 
-		Check(strings2.Truncate("a b c d e f", 6), Equals, "a b c...")
-		Check(strings2.Truncate("ab\ncdef", 3), Equals, "ab...")
+		Check(strutil.Truncate("a b c d e f", 6), Equals, "a b c...")
+		Check(strutil.Truncate("ab\ncdef", 3), Equals, "ab...")
 
-		Check(strings2.Truncate("abcdef", 3, ".."), Equals, "abc..")
+		Check(strutil.Truncate("abcdef", 3, ".."), Equals, "abc..")
 	})
 
 	Context("take chars", func() {
 
 		It("from left", func() {
-			Check(strings2.Take("", 1), Equals, "")
-			Check(strings2.Take("Hello World!", 5), Equals, "Hello")
-			Check(strings2.Take("Hello World!", 100), Equals, "Hello World!")
+			Check(strutil.Take("", 1), Equals, "")
+			Check(strutil.Take("Hello World!", 5), Equals, "Hello")
+			Check(strutil.Take("Hello World!", 100), Equals, "Hello World!")
 		})
 
 		It("from right", func() {
-			Check(strings2.TakeRight("", 1), Equals, "")
-			Check(strings2.TakeRight("Hello World!", 6), Equals, "World!")
-			Check(strings2.TakeRight("Hello World!", 100), Equals, "Hello World!")
+			Check(strutil.TakeRight("", 1), Equals, "")
+			Check(strutil.TakeRight("Hello World!", 6), Equals, "World!")
+			Check(strutil.TakeRight("Hello World!", 100), Equals, "Hello World!")
 		})
 
 		It("before pattern from left", func() {
-			Check(strings2.TakeBefore(":8080", ":"), Equals, "")
-			Check(strings2.TakeBefore("localhost", ":"), Equals, "localhost")
-			Check(strings2.TakeBefore("http://localhost:8080", ":"), Equals, "http")
+			Check(strutil.TakeBefore(":8080", ":"), Equals, "")
+			Check(strutil.TakeBefore("localhost", ":"), Equals, "localhost")
+			Check(strutil.TakeBefore("http://localhost:8080", ":"), Equals, "http")
 		})
 
 		It("after pattern from left", func() {
-			Check(strings2.TakeAfter(":8080", ":"), Equals, "8080")
-			Check(strings2.TakeAfter("localhost", ":"), Equals, "localhost")
-			Check(strings2.TakeAfter("http://localhost:8080", "://"), Equals, "localhost:8080")
+			Check(strutil.TakeAfter(":8080", ":"), Equals, "8080")
+			Check(strutil.TakeAfter("localhost", ":"), Equals, "localhost")
+			Check(strutil.TakeAfter("http://localhost:8080", "://"), Equals, "localhost:8080")
 		})
 
 		It("before pattern from right", func() {
-			Check(strings2.TakeRightBefore(":8080", ":"), Equals, "")
-			Check(strings2.TakeRightBefore("localhost", ":"), Equals, "localhost")
-			Check(strings2.TakeRightBefore("http://localhost:8080", ":"), Equals, "http://localhost")
+			Check(strutil.TakeRightBefore(":8080", ":"), Equals, "")
+			Check(strutil.TakeRightBefore("localhost", ":"), Equals, "localhost")
+			Check(strutil.TakeRightBefore("http://localhost:8080", ":"), Equals, "http://localhost")
 		})
 
 		It("after pattern from right", func() {
-			Check(strings2.TakeRightAfter("localhost:", ":"), Equals, "")
-			Check(strings2.TakeRightAfter("localhost", ":"), Equals, "localhost")
-			Check(strings2.TakeRightAfter("http://localhost:8080", ":"), Equals, "8080")
+			Check(strutil.TakeRightAfter("localhost:", ":"), Equals, "")
+			Check(strutil.TakeRightAfter("localhost", ":"), Equals, "localhost")
+			Check(strutil.TakeRightAfter("http://localhost:8080", ":"), Equals, "8080")
 		})
 	})
 })

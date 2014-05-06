@@ -1,4 +1,4 @@
-package strings2_test
+package strutil_test
 
 import (
 	. "github.com/101loops/bdd"
