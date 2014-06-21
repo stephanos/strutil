@@ -9,6 +9,7 @@ var _ = Describe("String Utility", func() {
 
 	It("deletes all spaces", func() {
 		Check(strutil.DeleteWhitespace(""), Equals, "")
+		Check(strutil.DeleteWhitespace("abc"), Equals, "abc")
 		Check(strutil.DeleteWhitespace(" a  b "), Equals, "ab")
 		Check(strutil.DeleteWhitespace("a \n \t b"), Equals, "ab")
 	})
