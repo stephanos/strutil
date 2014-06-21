@@ -22,11 +22,13 @@ func DeleteWhitespace(s string) string {
 	var hasSpace bool
 	var buf bytes.Buffer
 	for _, r := range s {
-		if !unicode.IsSpace(r) {
-			buf.WriteRune(r)
+		if unicode.IsSpace(r) {
 			hasSpace = true
+		} else {
+			buf.WriteRune(r)
 		}
 	}
+
 	if !hasSpace {
 		return s
 	}
