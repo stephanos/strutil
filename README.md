@@ -13,7 +13,6 @@ go get github.com/101loops/strutil
 [godoc.org](http://godoc.org/github.com/101loops/strutil)
 
 ## Credits
-
 - https://godoc.org/github.com/aokoli/goutils
 - https://github.com/mewkiz/pkg
 
