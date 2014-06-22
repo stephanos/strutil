@@ -3,16 +3,19 @@ strutil [![Build Status](https://secure.travis-ci.org/101loops/strutil.png)](htt
 
 This Go package provides useful string utilities.
 
-### Installation
-`go get github.com/101loops/strutil`
 
-### Documentation
+## Install
+```bash
+go get github.com/101loops/strutil
+```
+
+## Documentation
 [godoc.org](http://godoc.org/github.com/101loops/strutil)
 
-### Credits
+## Credits
 
 - https://godoc.org/github.com/aokoli/goutils
 - https://github.com/mewkiz/pkg
 
-### License
+## License
 MIT (see LICENSE).
